@@ -8,7 +8,7 @@ using Hermes.Ioc;
 using Hermes.ObjectBuilder.Autofac;
 using IContainer = Autofac.IContainer;
 
-namespace MediaManagement.Api
+namespace Pitching.Api
 {
     public class WebApiAutofacAdapter : AutofacAdapter
     {
@@ -21,10 +21,9 @@ namespace MediaManagement.Api
         private static IContainer ConfigureApiDependencies()
         {
             var builder = new ContainerBuilder();
-            var tasksWebApi = Assembly.Load(new AssemblyName("Workflow.HumanTasks.Web.Api"));
 
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly(), tasksWebApi);
-            builder.RegisterWebApiModelBinders(Assembly.GetExecutingAssembly(), tasksWebApi);
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterWebApiModelBinders(Assembly.GetExecutingAssembly());
 
             builder.RegisterWebApiModelBinderProvider();
             builder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);

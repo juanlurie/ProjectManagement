@@ -5,15 +5,11 @@ using Hermes.Messaging;
 using Hermes.Messaging.EndPoints;
 using Hermes.Messaging.Transports.SqlTransport;
 using Hermes.Serialization.Json;
-using MediaManagement.Contracts;
-using MediaManagement.Contracts.Commands;
-using MediaManagement.Persistence;
 using MessageContracts;
-using Workflow.HumanTasks.ApplicationService.Wireup;
-using Workflow.HumanTasks.Contracts.Commands;
-using Workflow.HumanTasks.Persistence.Wireup;
+using ProjectManagement.Contracts;
+using ProjectManagement.Persistence;
 
-namespace MediaManagement.Api
+namespace Pitching.Api
 {
     public class Endpoint : LocalEndpoint<WebApiAutofacAdapter>
     {
@@ -28,11 +24,8 @@ namespace MediaManagement.Api
                 .DefineEventAs(IsEvent)
                 .UserNameResolver(GetCurrentUserName)
                 .RegisterDependencies<DependencyRegistrar>()
-                .RegisterDependencies<QueryServiceDependencyRegistrar>()
-                .RegisterDependencies<HumanTasksDependencyRegistrar>()
-                .RegisterMessageRoute<ParseSpotList>(new Address("MediaManagement"))
                 .UseSqlTransport("SqlTransport")
-                .ConfigureEntityFramework<MediaContext>("Media");
+                .ConfigureEntityFramework<ProjectManagementContext>("ProjectManagement");
         }
 
         private static string GetCurrentUserName()
@@ -48,7 +41,7 @@ namespace MediaManagement.Api
             if (type == null || type.Namespace == null)
                 return false;
 
-            var isCommand = typeof(IWorkflowCommand).IsAssignableFrom(type) || typeof(IDomainCommand).IsAssignableFrom(type);
+            var isCommand = typeof(IDomainCommand).IsAssignableFrom(type);
 
             return isCommand;
         }

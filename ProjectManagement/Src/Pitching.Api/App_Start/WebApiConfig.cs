@@ -5,7 +5,7 @@ using Microsoft.Owin.Security.DataHandler;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
-namespace MediaManagement.Api
+namespace Pitching.Api
 {
     public static class WebApiConfig
     {

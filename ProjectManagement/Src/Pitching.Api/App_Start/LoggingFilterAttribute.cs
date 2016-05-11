@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Filters;
 using Hermes.Logging;
 
-namespace MediaManagement.Api
+namespace Pitching.Api
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
     public sealed class LoggingFilterAttribute : ActionFilterAttribute

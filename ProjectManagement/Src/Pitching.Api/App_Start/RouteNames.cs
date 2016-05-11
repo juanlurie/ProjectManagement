@@ -1,4 +1,4 @@
-﻿namespace MediaManagement.Api
+﻿namespace Pitching.Api
 {
     public static class RouteNames
     {

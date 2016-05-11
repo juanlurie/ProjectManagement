@@ -9,7 +9,7 @@ using log4net.Layout;
 using log4net.Repository.Hierarchy;
 using Owin;
 
-namespace MediaManagement.Api
+namespace Pitching.Api
 {
     public class Startup
     {
